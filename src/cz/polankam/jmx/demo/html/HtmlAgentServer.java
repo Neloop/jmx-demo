@@ -10,7 +10,9 @@ public class HtmlAgentServer {
     private MBeanServer mbs = null;
 
     public HtmlAgentServer() {
+    }
 
+    public void run() {
         // Create an MBeanServer
         mbs = ManagementFactory.getPlatformMBeanServer();
 
@@ -37,6 +39,7 @@ public class HtmlAgentServer {
 
     public static void main(String argv[]) {
         HtmlAgentServer agent = new HtmlAgentServer();
+        agent.run();
         System.out.println("HtmlAdaptorServer is running...");
     }
 }
