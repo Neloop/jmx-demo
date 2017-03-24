@@ -2,6 +2,13 @@ package cz.polankam.jmx.demo.mxbeans;
 
 public class DemoManager implements DemoManagerMXBean {
 
+    private final long startTime;
+    private String message = "Have a great day!";
+
+    public DemoManager() {
+        startTime = System.nanoTime();
+    }
+
     @Override
     public void sayHello() {
         System.out.println("Hello World!");
@@ -9,7 +16,12 @@ public class DemoManager implements DemoManagerMXBean {
 
     @Override
     public String getMessage() {
-        return "Have a great day!";
+        return message;
+    }
+
+    @Override
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
@@ -26,6 +38,11 @@ public class DemoManager implements DemoManagerMXBean {
     @Override
     public void killMe() {
         System.exit(0);
+    }
+
+    @Override
+    public long getUpTime() {
+        return System.nanoTime() - startTime;
     }
 
 }

@@ -1,6 +1,6 @@
-package cz.polankam.jmx.demo.mxbeans;
+package cz.polankam.jmx.demo.notifications;
 
-public interface DemoManagerMXBean {
+public interface DemoManagerMBean {
     public void sayHello();
     public String getMessage();
     public void setMessage(String message);

@@ -1,11 +1,9 @@
 package cz.polankam.jmx.demo.mbeans;
 
 import java.beans.BeanInfo;
-import java.beans.EventSetDescriptor;
 import java.beans.Introspector;
 import java.beans.MethodDescriptor;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 
 public class Inspector {
     public static void main(String[] argv) throws Exception {
@@ -23,13 +21,6 @@ public class Inspector {
                 System.out.print("property ");
                 System.out.print(pt.getName() + " ");
                 System.out.println(pd.getName());
-            }
-        }
-
-        for (EventSetDescriptor esd : bi.getEventSetDescriptors()) {
-            System.out.println("listener " + esd.getListenerType().getName());
-            for (Method m : esd.getListenerMethods()) {
-                System.out.println("  " + m.getName());
             }
         }
 

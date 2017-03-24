@@ -1,9 +1,17 @@
-package cz.polankam.jmx.demo.mbeans;
+package cz.polankam.jmx.demo.notifications;
 
-public class DemoManager implements DemoManagerMBean {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.management.AttributeChangeNotification;
+import javax.management.Notification;
+import javax.management.NotificationBroadcasterSupport;
+
+public class DemoManager extends NotificationBroadcasterSupport
+        implements DemoManagerMBean {
 
     private final long startTime;
     private String message = "Have a great day!";
+    private long sequenceNumber = 1;
 
     public DemoManager() {
         startTime = System.nanoTime();
@@ -21,7 +29,19 @@ public class DemoManager implements DemoManagerMBean {
 
     @Override
     public void setMessage(String message) {
+        String oldValue = this.message;
         this.message = message;
+
+        Notification n = new AttributeChangeNotification(this,
+                sequenceNumber++,
+                System.currentTimeMillis(),
+                "Message changed",
+                "Message",
+                "String",
+                oldValue,
+                this.message);
+
+        sendNotification(n);
     }
 
     @Override
