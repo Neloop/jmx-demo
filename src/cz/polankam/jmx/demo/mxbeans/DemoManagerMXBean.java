@@ -7,4 +7,5 @@ public interface DemoManagerMXBean {
     public long factorial(long number);
     public void killMe();
     public long getUpTime();
+    public RemoteCustomObject getRemoteCustomObject();
 }

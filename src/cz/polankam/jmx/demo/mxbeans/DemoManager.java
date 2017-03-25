@@ -45,4 +45,9 @@ public class DemoManager implements DemoManagerMXBean {
         return System.nanoTime() - startTime;
     }
 
+    @Override
+    public RemoteCustomObject getRemoteCustomObject() {
+        return new RemoteCustomObject("State", 5);
+    }
+
 }

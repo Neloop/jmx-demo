@@ -1,6 +1,5 @@
 package cz.polankam.jmx.demo.remote;
 
-import cz.polankam.jmx.demo.mbeans.DemoManagerMBean;
 import java.util.Set;
 import javax.management.Attribute;
 import javax.management.JMX;
@@ -9,6 +8,7 @@ import javax.management.ObjectName;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
+import cz.polankam.jmx.demo.mbeans.DemoManagerMBean;
 
 public class RmiClient {
     public static void main(String[] args) {
