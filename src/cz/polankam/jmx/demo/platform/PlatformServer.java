@@ -6,14 +6,11 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 public class PlatformServer {
-    private MBeanServer mbs = null;
 
-    public PlatformServer() {
-    }
-
-    public void init() {
+    public static void main(String argv[]) throws Exception {
+        
         // Create an MBeanServer
-        mbs = ManagementFactory.getPlatformMBeanServer();
+        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
 
         try {
             // Unique identification of MBeans
@@ -25,13 +22,11 @@ public class PlatformServer {
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }
 
-    public static void main(String argv[]) throws Exception {
-        PlatformServer agent = new PlatformServer();
-        agent.init();
+        //
         System.out.println("Running...");
 
+        // Wait forever
         while (true) {
             Thread.sleep(Integer.MAX_VALUE);
         }

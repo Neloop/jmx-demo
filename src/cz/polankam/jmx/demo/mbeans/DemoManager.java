@@ -45,4 +45,9 @@ public class DemoManager implements DemoManagerMBean {
         return System.nanoTime() - startTime;
     }
 
+    @Override
+    public RemoteCustomObject getRemoteCustomObject() {
+        return new RemoteCustomObject();
+    }
+
 }

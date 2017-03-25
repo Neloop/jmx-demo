@@ -6,14 +6,11 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 public class PlatformNotificationServer {
-    private MBeanServer mbs = null;
 
-    public PlatformNotificationServer() {
-    }
+    public static void main(String argv[]) throws Exception {
 
-    public void init() {
         // Create an MBeanServer
-        mbs = ManagementFactory.getPlatformMBeanServer();
+        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
 
         try {
             // Unique identification of MBeans
@@ -22,16 +19,14 @@ public class PlatformNotificationServer {
             // Uniquely identify the MBeans and register them with the MBeanServer
             ObjectName managerName = new ObjectName("PlatformNotificationServer:type=DemoManager");
             mbs.registerMBean(managerBean, managerName);
+
+            //
+            System.out.println("Running...");
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }
 
-    public static void main(String argv[]) throws Exception {
-        PlatformNotificationServer agent = new PlatformNotificationServer();
-        agent.init();
-        System.out.println("Running...");
-
+        // Wait forever
         while (true) {
             Thread.sleep(Integer.MAX_VALUE);
         }

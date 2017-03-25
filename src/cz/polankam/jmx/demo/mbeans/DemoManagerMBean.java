@@ -7,4 +7,5 @@ public interface DemoManagerMBean {
     public long factorial(long number);
     public void killMe();
     public long getUpTime();
+    public RemoteCustomObject getRemoteCustomObject();
 }

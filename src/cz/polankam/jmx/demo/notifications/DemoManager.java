@@ -1,7 +1,5 @@
 package cz.polankam.jmx.demo.notifications;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.management.AttributeChangeNotification;
 import javax.management.Notification;
 import javax.management.NotificationBroadcasterSupport;
