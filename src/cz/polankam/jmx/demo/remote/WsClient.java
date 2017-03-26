@@ -10,18 +10,18 @@ import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 import cz.polankam.jmx.demo.mbeans.DemoManagerMBean;
 
-public class RmiClient {
+public class WsClient {
     public static void main(String[] args) {
         try {
             // Create and RMI connector client and connect to remote server
-            JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:9999/server");
+            JMXServiceURL url = new JMXServiceURL("service:jmx:ws://localhost:11009/jmxws");
             JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
 
             // Retrieve remote MBeanServer
             MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();
 
             // Obtain DemoManagement MBean proxy object
-            ObjectName beanName = new ObjectName("RemoteServer:type=DemoManager,name=Demo");
+            ObjectName beanName = new ObjectName("WsPlatformServer:type=DemoManager,name=Demo");
             DemoManagerMBean proxy = JMX.newMBeanProxy(mbsc, beanName, DemoManagerMBean.class, true);
 
             // Get message from remote proxy
@@ -53,6 +53,9 @@ public class RmiClient {
             // Set value of attribute Message and print it
             mbsc.setAttribute(beanName, new Attribute("Message", "Set using only ObjectName!"));
             System.out.println("New message: \"" + mbsc.getAttribute(beanName, "Message") + "\"");
+
+            // Close connection at the end
+            jmxc.close();
 
         } catch (Exception e) {
             e.printStackTrace();
