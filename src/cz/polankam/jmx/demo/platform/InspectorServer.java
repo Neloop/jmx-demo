@@ -1,6 +1,6 @@
 package cz.polankam.jmx.demo.platform;
 
-import cz.polankam.jmx.demo.notifications.DemoManager;
+import cz.polankam.jmx.demo.mbeans.DemoManager;
 import java.lang.management.ManagementFactory;
 import javax.management.MBeanAttributeInfo;
 import javax.management.MBeanConstructorInfo;
